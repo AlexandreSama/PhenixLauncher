@@ -1,0 +1,221 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(../fonts/Avenir_Book.ttf);
+}
+
+/*  Transitions */
+
+.fadeIn {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex; /* ou toute autre valeur de display appropriée */
+}
+
+/* L'état final de l'animation fadeIn */
+.fadeIn.visible {
+  opacity: 1;
+  display: flex; /* ou toute autre valeur de display appropriée */
+}
+
+/* End Transition */
+
+/* Base */
+body {
+  font-family: myFirstFont;
+  background-image: url('../img/wallpaper.jpg');
+}
+
+.container-fluid {
+  height: 100vh;
+}
+
+.row {
+  height: 100%;
+}
+
+/* End Base */
+
+/* Topbar */
+
+.topBar {
+  background-color: rgba(0, 0, 0, 0.70);
+  /* Couleur de fond */
+  color: white;
+  /* Couleur du texte */
+  padding: 0;
+  /* Espacement interne */
+  height: 5%;
+  -webkit-app-region: drag;
+}
+
+.appName {
+  font-weight: bold;
+  padding-left: 10px;
+  /* Nom de l'application en gras */
+}
+
+.windowControls {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.windowControls button {
+  display: inline-block;
+  padding: 0;
+  width: 40px;
+  background: none;
+  border: none;
+  -webkit-app-region: no-drag;
+}
+
+.windowControls button:hover {
+  background: rgba(189, 189, 189, 0.43);
+}
+
+i {
+  height: 100%;
+  color: white;
+}
+
+/* End Topbar */
+
+/* Login */
+
+.loginContent {
+  background-color: rgba(0, 0, 0, 0.50);
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  -webkit-app-region: drag;
+}
+
+.loginOptions{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50%;
+  justify-content: center;
+  width: 30%;
+}
+
+.error-box{
+  display: none;
+  flex-direction: column;
+}
+
+.btn-close{
+  -webkit-app-region: no-drag;
+}
+
+.loginOptionButton {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(126, 126, 126, 0.57);
+  border-radius: 3px;
+  height: 50px;
+  width: 100%;
+  text-align: left;
+  padding: 0px 25px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  color: white;
+  -webkit-app-region: no-drag;
+}
+
+.loginOptionButton:hover {
+  background: rgba(54, 54, 54, 0.25);
+  text-shadow: 0px 0px 20px white;
+}
+
+/* End Login */
+
+/* Waiting */
+
+.waitingContent {
+  background-color: rgba(0, 0, 0, 0.50);
+  height: 95%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  -webkit-app-region: drag;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.waitingSpinner {
+  background-image: url(../img/waiting.png);
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+  background-size: cover;
+}
+
+/* End Waiting */
+
+/* Main */
+
+.mainContent{
+  background-color: rgba(0, 0, 0, 0.50);
+  height: 95%;
+  display: none;
+  align-items: center;
+  color: white;
+  -webkit-app-region: drag;
+  padding: 0;
+}
+
+.minecraft-sidebar {
+  height: 100%;
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.50);
+  color: #FFF;
+  padding: 1rem;
+  -webkit-app-region: no-drag;
+}
+
+.user-section, .server-section, .settings-section {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid white;
+}
+
+.user-section img, .server-icon {
+  border-radius: 10px; /* Arrondir les images */
+}
+
+.user-section h3 {
+  color: #a0a0a0; /* Une couleur claire pour le pseudo */
+  overflow: hidden;
+}
+
+.server-button {
+  width: 100%;
+}
+
+.server-icon {
+  width: 32px; /* Dimension de l'image du serveur */
+  height: 32px;
+  margin-right: 0.5rem;
+}
+
+.settings-button, .logout-button {
+  width: 100%;
+  text-align: left;
+}
+
+.settings-button i, .logout-button i {
+  margin-right: 0.5rem;
+}
+
+/* End Main */

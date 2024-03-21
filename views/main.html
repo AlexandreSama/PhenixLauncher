@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 topBar d-flex justify-content-between align-items-center">
+                <div class="appName">PhenixLauncher</div>
+                <div class="windowControls">
+                    <button id="minimizeBtn" class="btn btn-light"><i class="fa-solid fa-minus"></i></button>
+                    <button id="maximizeBtn" class="btn btn-light"><i class="fa-regular fa-square"></i></button>
+                    <button id="closeBtn" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <div class="col-12 loginContent" id="loginContent">
+                <div class="loginOptions">
+                    <div class="alert alert-danger alert-dismissible error-box" id="error-box" role="alert">
+                        <h4 class="alert-heading" id="errorTitle"></h4>
+                        <hr>
+                        <p id="errorText"></p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <h1>Se connecter avec</h1>
+                    <button id="loginOptionMicrosoft" class="loginOptionButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 23 23">
+                            <path fill="#f35325" d="M1 1h10v10H1z"></path>
+                            <path fill="#81bc06" d="M12 1h10v10H12z"></path>
+                            <path fill="#05a6f0" d="M1 12h10v10H1z"></path>
+                            <path fill="#ffba08" d="M12 12h10v10H12z"></path>
+                        </svg>
+                        <span>Login with Microsoft</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 waitingContent" id="waitingContent">
+                <div class="waitingSpinner"></div>
+                <div id="waitingText">
+                    <h2>En attente de Microsoft..</h2>
+                </div>
+            </div>
+            <div class="col-12 mainContent" id="mainContent">
+                <div class="minecraft-sidebar d-flex flex-column">
+                    <!-- User Section -->
+                    <div class="user-section text-center">
+                        <img src="#" alt="User Image" width="50" height="50" id="profilePicture">
+                        <h3 id="username"></h3>
+                    </div>
+
+                    <!-- Server Section -->
+                    <div class="nav flex-column server-section" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="server-button btn btn-dark" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                            <img src="../assets/img/phenixMGMinecraft.png" alt="Server Icon" class="server-icon">
+                            PhenixMG
+                        </button>
+                        <hr>
+                        <button class="settings-button btn btn-dark btn-block" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                            <i class="fas fa-cog"></i>Paramètres
+                        </button>
+                        <button class="logout-button btn btn-dark btn-block mt-2">
+                            <i class="fas fa-sign-out-alt"></i>Se déconnecter
+                        </button>
+                        <!-- ... other servers ... -->
+                    </div>
+                </div>
+
+                <!-- Main Panel Content -->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                        <h1>Accueil</h1>
+                        <!-- Server content here -->
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+                        <h1>Paramètres</h1>
+                        <!-- Settings content here -->
+                    </div>
+                    <!-- Additional content sections here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+</html>

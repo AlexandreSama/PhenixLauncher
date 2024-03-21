@@ -1,0 +1,47 @@
+{
+  "name": "phenixlauncher",
+  "version": "0.0.1",
+  "description": "A launcher for fun",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandreSama/PhenixLauncher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexandreSama/PhenixLauncher/issues"
+  },
+  "homepage": "https://github.com/AlexandreSama/PhenixLauncher#readme",
+  "keywords": [],
+  "author": "Djinn",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^29.1.4",
+    "minecraft-launcher-core": "^3.18.1",
+    "msmc": "^5.0.4",
+    "update-electron-app": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "fr.djinn.phenixlauncher",
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./build/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "./build/icon.ico",
+      "installerHeaderIcon": "./build/icon.ico",
+      "deleteAppDataOnUninstall": true
+    }
+  }
+}
