@@ -1,17 +1,20 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
+// contextBridge.exposeInMainWorld permet d'exposer de manière sécurisée des 
+// fonctions du processus principal (backend) a la page web (frontend) dans Electron.
+// J'ai séparé les fonctions en plusieurs parties pour mieux se repérer
 contextBridge.exposeInMainWorld('app', {
     nomApp: () => ipcRenderer.invoke('getAppName'),
     versionApp: () => ipcRenderer.invoke('getAppVersion'),
     closeApp: () => ipcRenderer.invoke('closeApp'),
     reduceApp: () => ipcRenderer.invoke('reduceApp'),
-    //nous pouvons aussi exposer des variables, pas seulement des fonctions
 })
 
 contextBridge.exposeInMainWorld('mc', {
     loginMS: () => ipcRenderer.invoke('loginMS'),
     onLoginDone: (profile) => ipcRenderer.on('loginDone', (profile)),
-    //nous pouvons aussi exposer des variables, pas seulement des fonctions
+    saveRam: (ramValue) => ipcRenderer.invoke('saveRam', ramValue),
+    getRam: () => ipcRenderer.invoke('getRam'),
 })
 
 contextBridge.exposeInMainWorld('errors', {

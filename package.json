@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "electron": "^29.1.4",
+    "electron-store": "^8.2.0",
     "minecraft-launcher-core": "^3.18.1",
     "msmc": "^5.0.4",
     "update-electron-app": "^3.0.0"

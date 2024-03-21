@@ -218,4 +218,27 @@ i {
   margin-right: 0.5rem;
 }
 
+.tab-content, .tab-pane{
+  width: 100%;
+  height: 100%;
+}
+
+.tab-pane{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
 /* End Main */
+
+/* Server Pane */
+
+/* End Server Pane */
+
+/* Param Pane */
+.params{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+/* End Param Pane */

@@ -7,6 +7,7 @@ const mainContent = document.getElementById('mainContent');
 const closeAppButton = document.getElementById('closeBtn');
 const reduceAppButton = document.getElementById('minimizeBtn');
 const loginWithMicrosoft = document.getElementById('loginOptionMicrosoft');
+const saveRamButton = document.getElementById('saveRam');
 
 /* Error-Box */
 const errorBox = document.getElementById('error-box');
@@ -16,6 +17,10 @@ const errorMessage = document.getElementById('errorText');
 /* User Infos */
 const profilePictureUser = document.getElementById('profilePicture');
 const username = document.getElementById('username');
+
+/* Ram Range*/
+const ramLabel = document.getElementById('ramLabel'); 
+const ramRange = document.getElementById('ramRange'); 
 
 /* App */
 window.app.versionApp().then(res => {
@@ -48,25 +53,17 @@ loginWithMicrosoft.addEventListener('click', () => {
 /* Errors part */
 window.errors.onWeirdToken((__event, data) => {
     loginContent.classList.add('fadeIn');
-    
-    // Utilisez requestAnimationFrame pour vous assurer que la classe fadeIn est appliquée
-    // et que le navigateur a eu le temps de re-calculer les styles avant de commencer la transition.
+
     requestAnimationFrame(() => {
         loginContent.classList.add('visible');
-
-        // Ajoutez un délai pour permettre à l'effet fadeIn de se terminer avant de cacher loginContent
-        setTimeout(() => {
-            waitingContent.style.display = 'none';
-        }, 500); // Ce délai correspond à la durée de la transition fadeIn
+        waitingContent.style.display = 'none';
     });
 })
 
 window.errors.onUserCloseMicrosoftFrame((data) => {
-    // Utiliser `data.title` et `data.message` pour afficher l'erreur
     errorTitle.innerHTML = data.title;
     errorMessage.innerHTML = data.message;
     errorBox.style.display = 'flex';
-
     loginContent.style.display = 'flex'
     
     requestAnimationFrame(() => {
@@ -78,15 +75,9 @@ window.errors.onUserCloseMicrosoftFrame((data) => {
 window.errors.onMinecraftNotOwned((__event, data) => {
     loginContent.classList.add('fadeIn');
     
-    // Utilisez requestAnimationFrame pour vous assurer que la classe fadeIn est appliquée
-    // et que le navigateur a eu le temps de re-calculer les styles avant de commencer la transition.
     requestAnimationFrame(() => {
         loginContent.classList.add('visible');
-
-        // Ajoutez un délai pour permettre à l'effet fadeIn de se terminer avant de cacher loginContent
-        setTimeout(() => {
-            waitingContent.style.display = 'none';
-        }, 500); // Ce délai correspond à la durée de la transition fadeIn
+        waitingContent.style.display = 'none';
     });
 })
 
@@ -100,13 +91,31 @@ window.mc.onLoginDone((__event, data) => {
     profilePictureUser.src = `https://minotar.net/avatar/${data[1]}`;
     username.innerHTML = data[0];
     
-    // Utilisez requestAnimationFrame pour vous assurer que la classe fadeIn est appliquée
-    // et que le navigateur a eu le temps de re-calculer les styles avant de commencer la transition.
     requestAnimationFrame(() => {
         mainContent.classList.add('visible');
         waitingContent.style.display = 'none';
     });
 })
 
-
 /* End Main part */
+
+/* Params part */
+
+ramRange.addEventListener('input', () => { 
+    ramLabel.innerText = 'Ram : ' + ramRange.valueAsNumber + 'Go'; 
+}) 
+
+saveRamButton.addEventListener('click', () => {
+    window.mc.saveRam(ramRange.valueAsNumber);
+    //Reste plus qu'a implémenter une petite box pour dire "C'est sauvegardé tkt"
+})
+
+window.mc.getRam().then((ramValue) => {
+    // On affiche la valeur de la ram (5 ou le nombre qu'a choisi l'utilisateur)
+    ramLabel.innerText = 'Ram : ' + ramValue + 'Go';
+    ramRange.value = ramValue;
+});
+
+
+
+/* End Params part */
