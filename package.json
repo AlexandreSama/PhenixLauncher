@@ -36,7 +36,8 @@
   "build": {
     "appId": "fr.djinn.phenixlauncher",
     "directories": {
-      "buildResources": "build"
+      "buildResources": "build",
+      "output": "dist"
     },
     "win": {
       "target": "nsis",
@@ -46,6 +47,10 @@
       "installerIcon": "./build/icon.ico",
       "installerHeaderIcon": "./build/icon.ico",
       "deleteAppDataOnUninstall": true
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
     }
   }
 }
