@@ -232,13 +232,82 @@ i {
 
 /* Server Pane */
 
+.phenixmgContent{
+  width: 100%;
+  height: 90%;
+}
+
+.video{
+  width: 100%;
+  height: 90%;
+  -webkit-app-region: no-drag;
+}
+
+.bottomContent{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  -webkit-app-region: no-drag;
+}
+
+.progressbar {
+  position: relative; /* Établit le conteneur de la barre de progression comme référence de positionnement pour les éléments enfants */
+  width: 85%;
+  height: 30px; /* Hauteur de la barre de progression */
+  background-color: white;
+  border-radius: 5px; /* Arrondit les coins */
+}
+
+.progress {
+  position: absolute; /* Positionne la barre de progression par rapport à son parent */
+  height: 100%; /* Hauteur complète du conteneur */
+  background-color: #4caf50; /* Couleur de la barre de progression */
+  border-radius: 5px; /* Arrondit les coins */
+  z-index: 1; /* S'assure que la barre est en dessous du label */
+}
+
+.label {
+  position: absolute; /* Positionne le label par rapport à son parent */
+  width: 100%; /* Largeur complète du conteneur */
+  text-align: center; /* Centre le texte horizontalement */
+  line-height: 30px; /* Centrage vertical du texte, doit correspondre à la hauteur du conteneur */
+  z-index: 2; /* S'assure que le label est au-dessus de la barre de progression */
+  color: black; /* Couleur du texte */
+}
+
+#playButton{
+  width: 10%;
+  height: 100%;
+}
+
 /* End Server Pane */
 
 /* Param Pane */
 .params{
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  -webkit-app-region: no-drag;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+}
+
+.ramPart{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  -webkit-app-region: no-drag;
+  width: 30%;
+}
+
+.gameFolders{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 /* End Param Pane */

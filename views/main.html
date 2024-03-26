@@ -23,7 +23,7 @@
             </div>
 
             <!-- Login Screen -->
-            <div class="col-12 loginContent d-none" id="loginContent">
+            <div class="col-12 loginContent" id="loginContent">
                 <div class="loginOptions">
                     <div class="alert alert-danger alert-dismissible error-box" id="error-box" role="alert">
                         <h4 class="alert-heading" id="errorTitle"></h4>
@@ -45,7 +45,7 @@
             </div>
 
             <!-- Waiting Screen -->
-            <div class="col-12 waitingContent d-none" id="waitingContent">
+            <div class="col-12 waitingContent" id="waitingContent">
                 <div class="waitingSpinner"></div>
                 <div id="waitingText">
                     <h2>En attente de Microsoft..</h2>
@@ -53,7 +53,7 @@
             </div>
 
             <!-- Main Screen -->
-            <div class="col-12 mainContent d-flex" id="mainContent">
+            <div class="col-12 mainContent" id="mainContent">
                 <div class="minecraft-sidebar d-flex flex-column">
 
                     <!-- User Section -->
@@ -90,7 +90,19 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-phenixmg" role="tabpanel"
                         aria-labelledby="v-pills-phenixmg-tab" tabindex="0">
-                        <h1>Accueil</h1>
+                        <h1>PhenixMG</h1>
+                        <div class="phenixmgContent">
+                            <div class="video">
+
+                            </div>
+                            <div class="bottomContent">
+                                <div class="progressbar" id="progress-container">
+                                    <div class="progress" id="progress-bar"></div>
+                                    <div class="label" id="progress-bar-text"></div>
+                                </div>                                
+                                <button class="btn btn-success" id="playButton">Jouer</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
                         aria-labelledby="v-pills-settings-tab" tabindex="0">
@@ -100,6 +112,10 @@
                                 <label for="customRange3" class="form-label" id="ramLabel"></label>
                                 <input type="range" class="form-range" min="4" max="15" step="1" id="ramRange">
                                 <button class="btn btn-success" id="saveRam">Sauvegarder</button>
+                            </div>
+                            <div class="gameFolders">
+                                <label>Fichiers du jeu</label>
+                                <button class="btn btn-success" id="openGameFolder">Ouvrir les fichiers du jeu</button>
                             </div>
                         </div>
                     </div>

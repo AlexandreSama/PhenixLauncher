@@ -21,10 +21,13 @@
   "author": "Djinn",
   "license": "ISC",
   "dependencies": {
+    "adm-zip": "^0.5.12",
+    "axios": "^1.6.8",
     "electron": "^29.1.4",
     "electron-store": "^8.2.0",
     "minecraft-launcher-core": "^3.18.1",
     "msmc": "^5.0.4",
+    "nodejs-file-downloader": "^4.12.1",
     "update-electron-app": "^3.0.0"
   },
   "devDependencies": {

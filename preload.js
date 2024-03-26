@@ -8,6 +8,7 @@ contextBridge.exposeInMainWorld('app', {
     versionApp: () => ipcRenderer.invoke('getAppVersion'),
     closeApp: () => ipcRenderer.invoke('closeApp'),
     reduceApp: () => ipcRenderer.invoke('reduceApp'),
+    openGameFolder: () => ipcRenderer.invoke('openGameFolder'),
 })
 
 contextBridge.exposeInMainWorld('mc', {
@@ -15,6 +16,26 @@ contextBridge.exposeInMainWorld('mc', {
     onLoginDone: (profile) => ipcRenderer.on('loginDone', (profile)),
     saveRam: (ramValue) => ipcRenderer.invoke('saveRam', ramValue),
     getRam: () => ipcRenderer.invoke('getRam'),
+    launchGame : () => ipcRenderer.invoke('launchGame'),
+    onJavaEvent: (callback) => {
+        ipcRenderer.removeAllListeners('javaEvents');
+        ipcRenderer.on('javaEvents', (event, status, message) => {
+            callback(status, message);
+        });
+    },
+    onForgeEvent: (callback) => {
+        ipcRenderer.removeAllListeners('forgeEvents');
+        ipcRenderer.on('forgeEvents', (event, status, message) => {
+            callback(status, message);
+        });
+    },
+    onModEvent: (callback) => {
+        ipcRenderer.removeAllListeners('modEvents');
+        ipcRenderer.on('modEvents', (event, status, message) => {
+            callback(status, message);
+        });
+    },
+    onDataDownload: (data) => ipcRenderer.on('dataDownload', (data)),
 })
 
 contextBridge.exposeInMainWorld('errors', {
