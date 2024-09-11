@@ -13,7 +13,7 @@ const Downloader = require("nodejs-file-downloader");
 let mainWindow;
 let token;
 
-let appPaths = path.join(app.getPath("appData"), "Phenix Launcher");
+let appPaths = path.join(app.getPath("appData"), "Kashir Launcher");
 let gameFolders = [appPaths, path.join(appPaths, "java"), path.join(appPaths, "mods")];
 const launcher = new Client();
 
@@ -53,7 +53,7 @@ async function checkJavaAndForge(rootFolder, javaFolder, event) {
         if (files.length === 0) {
             event.sender.send("javaEvents", "javaNotInstalled", "Java n'est pas installé ! Je le télécharge...");
             await downloadFile({
-                url: "https://phenixlauncher.kashir.fr/java", // Assurez-vous que l'URL est correcte
+                url: "https://launcher.kashir.fr/java", // Assurez-vous que l'URL est correcte
                 directory: javaFolder,
                 fileName: "java.zip"
             });
@@ -74,7 +74,7 @@ async function checkJavaAndForge(rootFolder, javaFolder, event) {
         } catch {
             event.sender.send("forgeEvents", "forgeDownloading", "Forge n'est pas téléchargé ! Je le télécharge...");
             await downloadFile({
-                url: "https://phenixlauncher.kashir.fr/forge", // Assurez-vous que l'URL est correcte
+                url: "https://launcher.kashir.fr/forge", // Assurez-vous que l'URL est correcte
                 directory: rootFolder,
                 fileName: "forge.jar"
             });
@@ -92,7 +92,7 @@ async function checkJavaAndForge(rootFolder, javaFolder, event) {
 
 async function synchronizeFilesWithJSON(modsPath, event) {
     try {
-        const response = await axios.get("https://phenixlauncher.kashir.fr/modlist");
+        const response = await axios.get("https://launcher.kashir.fr/modlist");
         const jsonContent = response.data;
         const folderFiles = await fs.readdir(modsPath);
 
@@ -101,15 +101,15 @@ async function synchronizeFilesWithJSON(modsPath, event) {
 
         // Télécharger les fichiers manquants un par un
         if (missingFiles.length > 0) {
-            event.sender.send("modEvents", "modsMissing", `${missingFiles.length} files are missing from the folder!`);
+            event.sender.send("modEvents", "modsMissing", `${missingFiles.length} mods manquant !`);
             for (let i = 0; i < missingFiles.length; i++) {
                 const file = missingFiles[i];
                 await downloadFile({
-                    url: `https://phenixlauncher.kashir.fr/mod/${file}`,
+                    url: `https://launcher.kashir.fr/mod/${file}`,
                     directory: modsPath,
                     fileName: file
                 });
-                event.sender.send("modEvents", "modsDownloading", `Downloaded file: ${i + 1} / ${missingFiles.length}`);
+                event.sender.send("modEvents", "modsDownloading", [`Téléchargement de: ${i + 1} / ${missingFiles.length} mods`, i + 1, missingFiles.length]);
             }
         }
 

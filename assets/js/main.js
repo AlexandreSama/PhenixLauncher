@@ -166,12 +166,15 @@ window.mc.onModEvent((status, message) => {
             progressLabel.innerHTML = message;
             break;
         case "modsDownloading":
-            progressBar.style.width = '100%';
-            progressLabel.innerHTML = message;
+            console.log(message);
+            let percent = (message[1] / message[2]) * 100;
+            changeProgress(percent)
+            progressLabel.innerHTML = message[0];
             break;
         case "modsRemoved":
-            progressBar.style.width = '100%';
-            progressLabel.innerHTML = message;
+            percent = (message[1] / message[2]) * 100;
+            changeProgress(percent)
+            progressLabel.innerHTML = message[0];
             break;
         case "modsSync":
             progressBar.style.width = '100%';
